@@ -35,6 +35,8 @@ rule-files:
 
 Обе системы должны находится в одной подсети.
 
+![Скриншот-02](https://github.com/Yuriykup/Netology_13-03-hw/blob/main/img/img02.png)
+
 ------
 
 ### Задание 1
