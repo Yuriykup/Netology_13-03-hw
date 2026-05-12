@@ -3,11 +3,33 @@
 ------
 
 ### Подготовка к выполнению заданий
+`IP адрес атакующей машины: 192.168.0.71`
+`IP адрес защищающейся машины: 192.168.0.67`
+
 
 1. Подготовка защищаемой системы:
 
 - установите **Suricata**,
+
+![Скриншот-00](https://github.com/Yuriykup/Netology_13-03-hw/blob/main/img/img00.png)
+
+`Вносим настройки в файл **/etc/suricata/suricata.yaml**`
+
+```
+EXTERNAL_NET: “any” # указываем "any"
+
+af-packet: # заменяем имя интерфейса в разделе af-packet 
+interface: enp0s3
+
+default-rule-path: /var/lib/suricata/rules/ # указываем путь к правилам Suricata
+rule-files:
+- suricata.rules
+```
+
 - установите **Fail2Ban**.
+
+![Скриншот-01](https://github.com/Yuriykup/Netology_13-03-hw/blob/main/img/img01.png)
+
 
 2. Подготовка системы злоумышленника: установите **nmap** и **thc-hydra** либо скачайте и установите **Kali linux**.
 
