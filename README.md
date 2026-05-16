@@ -77,8 +77,6 @@ sudo suricata -c /etc/suricata/suricata.yaml -i enp0s3
 
 #### С помощью утилиты `nmap` был проведён комплексный анализ хоста с IP-адресом `192.168.0.108`: использовались различные методы сканирования — `ACK, SYN, connect`, а также определение версий запущенных сервисов. На защищаемой машине система обнаружения вторжений Suricata зафиксировала соответствующие сетевые активности, распознав их как попытки сканирования портов.
 
----
-
 ------
 
 ### Задание 2
@@ -102,6 +100,73 @@ sudo suricata -c /etc/suricata/suricata.yaml -i enp0s3
 
 Дополнительная информация по **Fail2Ban**:https://putty.org.ru/articles/fail2ban-ssh.html.
 
+---
+### ОТВЕТ на Задание 2.
 
+`2.1 Содаём пользователя dupe-user с паролем 1234.`
+```
+sudo adduser dupe-user
+...
+...
+New password: 1234
+BAD PASSWORD: The password is shorter than 8 characters
+Retype new password: 1234
+```
+![Скриншот-21](https://github.com/Yuriykup/Netology_13-03-hw/blob/main/img/img21.png)
+
+`2.2 Создаём файлы users.txt и pass.txt на машиен Kali.`
+
+```
+users.txt
+
+admin
+administrator
+god
+andrey
+superman
+dupe-user
+root
+```
+
+```
+pass.txt
+
+1234
+god
+qwerty
+abcd
+QJt#90_@root
+god
+root
+```
+![Скриншот-22](https://github.com/Yuriykup/Netology_13-03-hw/blob/main/img/img22.png)
+
+`2.3 Тестируем Hydra при отключенной защите.`
+
+`Успешный подбор пароля.`
+
+![Скриншот-231](https://github.com/Yuriykup/Netology_13-03-hw/blob/main/img/img231.png) 
+
+`Отображение в лог файлах попытки подбора логинов и паролей и успешная авторизация dupe-user`
+
+
+`2.4 Включаем защиту SSH для Fail2Ban.`
+
+`В файле /etc/fail2ban/jail.conf, в секции sshd установливаем enabled = true.`
+
+![Скриншот-24](https://github.com/Yuriykup/Netology_13-03-hw/blob/main/img/img24.png)
+
+`Перезапускаем сервис Fail2Ban.`
+
+```
+sudo systemctl stop fail2ban.service
+```
+
+`2.5 Запускае Hydra при включенной защите.`
+
+![Скриншот-25](https://github.com/Yuriykup/Netology_13-03-hw/blob/main/img/img25.png)
+
+`Вывод: После активации защиты fail2ban и настройки конфигурационного файла, атака была успешно заблокирована.`
+---
 
 *В качестве ответа пришлите события, которые попали в логи Suricata и Fail2Ban, прокомментируйте результат.*
