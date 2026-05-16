@@ -145,9 +145,11 @@ root
 
 `Успешный подбор пароля.`
 
-![Скриншот-231](https://github.com/Yuriykup/Netology_13-03-hw/blob/main/img/img231.png) 
+![Скриншот-23](https://github.com/Yuriykup/Netology_13-03-hw/blob/main/img/img23.png) 
 
 `Отображение в лог файлах попытки подбора логинов и паролей и успешная авторизация dupe-user`
+
+![Скриншот-231](https://github.com/Yuriykup/Netology_13-03-hw/blob/main/img/img231.png)
 
 
 `2.4 Включаем защиту SSH для Fail2Ban.`
